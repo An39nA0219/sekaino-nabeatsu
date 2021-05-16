@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
@@ -11,13 +11,16 @@ function App() {
     setDisplay(!display);
   };
 
-  if (count > 0) {
-    if (count % 3 === 0) {
-      display || setDisplay(true);
-    } else {
-      display && setDisplay(false);
+  useEffect( () => {
+    if (count > 0) {
+      if (count % 3 === 0) {
+        display || setDisplay(true);
+      } else {
+        display && setDisplay(false);
+      }
     }
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count]);
 
   return (
     <div className="App">
