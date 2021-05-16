@@ -11,11 +11,20 @@ function App() {
     setDisplay(!display);
   };
 
+  if (count > 0) {
+    if (count % 3 === 0) {
+      display || setDisplay(true);
+    } else {
+      display && setDisplay(false);
+    }
+  }
+
   return (
     <div className="App">
-      <p>
-        {count}! {display && <span>🤪</span>}
-      </p>
+      <div>
+        <span>{count}!</span>
+        {display && <span>🤪</span>}
+      </div>
       <button onClick={onClickCountUp}>Count UP!</button>
       <button onClick={onClickSwitchDisplay}>On / Off</button>
     </div>
